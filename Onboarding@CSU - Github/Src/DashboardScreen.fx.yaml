@@ -1,0 +1,419 @@
+DashboardScreen As screen:
+    BackgroundImage: =background
+    ImagePosition: =ImagePosition.Stretch
+    OnVisible: =If(_impersonation = false, Set(_role, LookUp(list_person,  personEmail = _email , role.Value)) ; Concurrent(ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)), ClearCollect(taskComplete, Filter(list_tasks_complete_by, cr77a_name = _email))); ClearCollect(taskCollection, AddColumns(taskList,"Check",If(LookUp(taskComplete,ID = cr77a_task_id, true) ,true, false))))
+
+    picture_user_1 As image:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: =User().Image
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        RadiusBottomLeft: =picture_user_1.Height
+        RadiusBottomRight: =picture_user_1.Height
+        RadiusTopLeft: =picture_user_1.Height
+        RadiusTopRight: =picture_user_1.Height
+        X: =44
+        Y: =29
+        ZIndex: =1
+
+    label_welcome_1 As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        FontWeight: =FontWeight.Bold
+        Height: =57
+        Size: =20
+        Text: ="Welcome " & User().FullName & " !"
+        Width: =691
+        X: =153
+        Y: =22
+        ZIndex: =2
+
+    label_roleTitle_1 As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisplayMode: =DisplayMode.View
+        FocusedBorderThickness: =4
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        Size: =21
+        Text: =If(_impersonation = true, Blank() , _role)
+        Width: =196
+        X: =500
+        Y: =79
+        ZIndex: =3
+
+    label_roleText_1 As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(25, 77, 199, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        FontWeight: =FontWeight.Semibold
+        Height: =435
+        LineHeight: =1.5
+        Size: =16
+        Text: =Switch(_role,Blank(), "Choose a role to discover the activities associated!","CSAM","The CSAM Customer Success Account Manager act as the single customer facing, account durable leader responsible for managing and orchestrating support delivery activities within an account (set of accounts). This is inclusive of customer success, support, and transformation activities across the free-to-fee spectrum. The prevailing business priority is the customers’ successful adoption and productive use of Microsoft cloud technologies.","CE","Customer Engineers (CEs) are deep technical advisors supporting Enterprise customers to deliver unique value by removing blockers to consumption within their given Solution Area. CEs provide technical support including risk assessments and tuning to operate and optimize a customer’s cloud or on-premise environment. The Customer Engineer provides support delivery services as well as technical readiness through a Customer’s Support contract via dispatch by the account team. Customer Engineer services can be delivered either remotely or on-premises.", "CE Aspire","Customer Engineers (CEs) are deep technical advisors supporting Enterprise customers to deliver unique value by removing blockers to consumption within their given Solution Area. CEs provide technical support including risk assessments and tuning to operate and optimize a customer’s cloud or on-premise environment. The Customer Engineer provides support delivery services as well as technical readiness through a Customer’s Support contract via dispatch by the account team. Customer Engineer services can be delivered either remotely or on-premises.", "CSA Apps&Infra","CSAs play a critical role in working with partners to provide deep technical support through solution build and first mile customer engagements including Proof of Concepts, Architectural Design Sessions (ADS), and Hackathons. The CSAs build relationships with partner technical and development resources, designing and architecting new solutions based on Microsoft’s Azure cloud platform and technologies. They deliver value via a portfolio of service delivery engagements optimized to accelerate partner solution builds and first mile customer wins and stand out as a Technology expert due to deep solutions knowledge.", "CSA Data&IA", "CSAs play a critical role in working with partners to provide deep technical support through solution build and first mile customer engagements including Proof of Concepts, Architectural Design Sessions (ADS), and Hackathons. The CSAs build relationships with partner technical and development resources, designing and architecting new solutions based on Microsoft’s Azure cloud platform and technologies. They deliver value via a portfolio of service delivery engagements optimized to accelerate partner solution builds and first mile customer wins and stand out as a Technology expert due to deep solutions knowledge.", "CSM BA","The CSM role will collaboratively drive change management and adoption activities with key Business Decision Makers, help reduce implementation risk, drive usage of existing workloads, and identify opportunities in her/his accounts. The CSM is also a key part of our customer facing sales teams and will be called on frequently to leverage their deep knowledge of CRM or ERP to support sales growth.", "CSM MW", "This Customer Success Manager role will cover managed Modern Work customers in their area. This is an exciting role that will drive usage and consumption of customer owned workloads that will create bonds with our Enterprise customers and will fuel customer success, retention, growth, renewal and inoculate us against the competition. Your work will be focused on helping our customers achieve more through Remote Work and Business Continuity scenarios.")
+        Width: =560
+        X: =44
+        Y: =168
+        ZIndex: =4
+
+    label_intro_1 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Height: =50
+        Size: =16
+        Text: =If(_impersonation= true, "", "Congratulation! 🎉 Now you are ")
+        Width: =343
+        X: =172
+        Y: =79
+        ZIndex: =5
+
+    logo_dashboard_1 As image:
+        Height: =65
+        Image: =microsoft
+        Width: =152
+        X: =1163
+        Y: =29
+        ZIndex: =6
+
+    button_roadmap_1 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisplayMode: =If(IsBlank(_role), Disabled, Edit)
+        Fill: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Navigate(RoadmapScreen,None) 
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =16
+        Text: ="Roadmap"
+        Width: =182
+        X: =202
+        Y: =625
+        ZIndex: =7
+
+    label_contact_1 As label:
+        Color: =RGBA(130, 141, 158, 1)
+        Height: =36
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: ="If you have an issue, please contact"
+        Width: =286
+        X: =931
+        Y: =728
+        ZIndex: =8
+
+    Image4 As image:
+        Height: =509
+        Image: =goal
+        Width: =658
+        X: =666
+        Y: =219
+        ZIndex: =9
+
+    Image5 As image:
+        Height: =502
+        Image: =whiteboard
+        Width: =421
+        X: =945
+        Y: =191
+        ZIndex: =10
+
+    lablel_progress_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =140
+        Size: =20
+        Text: |-
+            =If(_impersonation = true, "Your Progress: ---","Your Progress: " & RoundUp(CountRows(taskComplete)*100/CountRows(taskCollection), 0) & "%")
+        Width: =254
+        X: =1026
+        Y: =328
+        ZIndex: =11
+
+    button_contact_2 As button:
+        Color: =RGBA(128, 128, 128, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Normal
+        HoverColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Italic: =true
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: ="OBC CSU admin"
+        Underline: =true
+        Width: =130
+        X: =1200
+        Y: =724
+        ZIndex: =12
+
+    button_impersonation As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Disabled, Edit)
+        Fill: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_impersonation, true) ;  Set(_role, Blank()) 
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Text: ="Try another role"
+        Width: =220
+        X: =1012
+        Y: =169
+        ZIndex: =13
+
+    button_CSAM As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = button_CSAM.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, button_CSAM.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CSAM"
+        Width: =67
+        X: =153
+        Y: =90
+        ZIndex: =16
+
+    "'button_CSA_Apps&Infra' As button":
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = 'button_CSA_Apps&Infra'.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, 'button_CSA_Apps&Infra'.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CSA Apps&Infra"
+        Width: =149
+        X: =709
+        Y: =88
+        ZIndex: =17
+
+    "'button_CSA_Data&IA' As button":
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = 'button_CSA_Data&IA'.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, 'button_CSA_Data&IA'.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CSA Data&IA"
+        Width: =121
+        X: =575
+        Y: =90
+        ZIndex: =18
+
+    button_CSM_BA As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = button_CSM_BA.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, button_CSM_BA.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CSM BA"
+        Width: =102
+        X: =459
+        Y: =90
+        ZIndex: =19
+
+    button_CSM_MW As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = button_CSM_MW.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, button_CSM_MW.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CSM MW"
+        Width: =108
+        X: =881
+        Y: =88
+        ZIndex: =20
+
+    button_CE As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = button_CE.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, button_CE.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CE"
+        Width: =95
+        X: =350
+        Y: =90
+        ZIndex: =21
+
+    button_CE_Aspire As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =If(_role = button_CE_Aspire.Text, RGBA(30,174,247,1),  RGBA(25, 77, 199, 1))
+        FontWeight: =FontWeight.Bold
+        Height: =39
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_role, button_CE_Aspire.Text); ClearCollect(taskList, Filter(list_tasks, _role in role.Value || "ALL" in role.Value)); ClearCollect(taskCollection, AddColumns(taskList,"Check", false))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="CE Aspire"
+        Width: =97
+        X: =236
+        Y: =90
+        ZIndex: =22
+
+    button_roadmap_9 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        Color: =RGBA(184, 0, 0, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        DisplayMode: =If(_impersonation = true, Edit, Disabled)
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Bold
+        Height: =41
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 0, 0, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        OnSelect: =Navigate(LoadingScreen, None)
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedColor: =RGBA(255, 0, 0, 1)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="Impersonation mode " & _role & ", click here to stop"
+        Width: =513
+        X: =379
+        Y: =723
+        ZIndex: =24
+

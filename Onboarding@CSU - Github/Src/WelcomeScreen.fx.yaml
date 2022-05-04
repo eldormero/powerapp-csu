@@ -1,0 +1,133 @@
+WelcomeScreen As screen:
+    BackgroundImage: =background
+    Fill: =WhiteSmoke
+    ImagePosition: =ImagePosition.Fill
+
+    logo As image:
+        Height: =65
+        Image: =microsoft
+        Width: =152
+        X: =1163
+        Y: =29
+        ZIndex: =1
+
+    picture_description As image:
+        AccessibleLabel: ="Layouts_Tutorial_Image_Accessible_Text"
+        Height: =381
+        Image: =If(IsBlank(_guideStep), First(gallery_welcome.AllItems).Image, LookUp(gallery_welcome.AllItems, Step = _guideStep).Image)
+        Width: =450
+        X: =865
+        Y: =294
+        ZIndex: =2
+
+    label_welcomeDescription As label:
+        Align: =Align.Center
+        Color: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =359
+        LineHeight: =1.5
+        PaddingLeft: =20
+        PaddingRight: =20
+        Size: =18
+        Text: =If(IsBlank(_guideStep), First(gallery_welcome.AllItems).Text, LookUp(gallery_welcome.AllItems, Step = _guideStep).Text)
+        Width: =512
+        X: =132
+        Y: =152
+        ZIndex: =3
+
+    gallery_welcome As gallery.TutorialGalleryHorizontal:
+        AccessibleLabel: ="Layouts_Tutorial_Gallery_Accessible_Text"
+        Height: =60
+        Items: |-
+            =Table(           
+             {Step: 0, Text:"Welcome! We're very excited to have you join Microsoft team!CSU-Onbording is a power apps application created to facilitate your integration within the CSU,so that you can understand your role as well as the other roles you will be working with on a daily basis.",Image:Onboard},           
+             {Step: 1, Text:"You will understand your role as well as the other roles you will be working in on a daily basis.", Image:Role},           
+             {Step: 2, Text:"You will understand the different tools you will use to achieve your role objectives, so you will find all the administrative tools that may be of interest to you.", Image:Tools},           
+             {Step: 3, Text:"The goal is to be able to have a global view of the CSU and a more specific view of your role and acheive your goal.", Image:Collab}
+            )
+        ShowScrollbar: =false
+        TemplatePadding: =8
+        TemplateSize: =25
+        Width: =141
+        X: =306
+        Y: =486
+        ZIndex: =4
+
+        Circle4_1 As circle:
+            BorderColor: =RGBA(25, 77, 199, 1)
+            BorderThickness: =2
+            Fill: =If(Or(ThisItem.Step = 0 && IsBlank(_guideStep), ThisItem.Step = _guideStep), icon_previous.Color, RGBA(0,0,0,0))
+            FocusedBorderThickness: =4
+            Height: =Circle4_1.Width
+            OnSelect: =Set(_guideStep, ThisItem.Step)
+            TabIndex: =0
+            Width: =Parent.TemplateWidth - 5
+            X: =5
+            Y: =Parent.TemplateHeight/2 - Self.Height/2
+            ZIndex: =1
+
+    icon_next As icon.ChevronRight:
+        Color: =RGBA(25, 77, 199, 1)
+        Height: =50
+        HoverColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =ColorFade(Self.Fill, 20%)
+        Icon: =Icon.ChevronRight
+        OnSelect: =Set(_guideStep, Min(_guideStep+1, Last(gallery_welcome.AllItems).Step))
+        Width: =50
+        X: =656
+        Y: =313
+        ZIndex: =10
+
+    icon_previous As icon.ChevronLeft:
+        Color: =RGBA(25, 77, 199, 1)
+        Height: =50
+        HoverColor: =RGBA(30, 174, 247, 1)
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Set(_guideStep, Max(_guideStep-1, First(gallery_welcome.AllItems).Step))
+        Width: =50
+        X: =61
+        Y: =313
+        ZIndex: =11
+
+    label_logo As label:
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =59
+        Size: =20
+        Text: ="Onboarding@CSU"
+        Width: =251
+        X: =109
+        Y: =32
+        ZIndex: =12
+
+    picture_logo As image:
+        Height: =50
+        Image: ='onboarding@CSU_logo'
+        Width: =50
+        X: =48
+        Y: =36
+        ZIndex: =13
+
+    button_dashboard As button:
+        BorderColor: =RGBA(30, 174, 247, 1)
+        BorderThickness: =0
+        Fill: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Navigate(DashboardScreen, None) 
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =16
+        Text: ="Dashboard"
+        Width: =182
+        X: =285
+        Y: =601
+        ZIndex: =16
+

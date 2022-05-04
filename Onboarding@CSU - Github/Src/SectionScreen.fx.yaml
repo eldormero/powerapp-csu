@@ -1,0 +1,328 @@
+SectionScreen As screen:
+    BackgroundImage: =background
+    Fill: =WhiteSmoke
+    ImagePosition: =ImagePosition.Stretch
+
+    "gallery_onboarding As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+        Height: =530
+        Items: =Filter(taskCollection,label_onboarding.Text = Section.Value , _timeline = timeline.Value)
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =400
+        X: =48
+        Y: =194
+        ZIndex: =1
+
+        TextInput1_2 As text:
+            BorderThickness: =0
+            Default: =""
+            DisabledFill: =RGBA(241, 244, 249, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(243, 243, 243, 1)
+            Height: =30
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            Width: =380
+            Y: =5
+            ZIndex: =1
+
+        title_onboarding As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =18
+            HoverColor: =RGBA(30, 174, 247, 1)
+            LineHeight: =1.5
+            OnSelect: =Set(_task, ThisItem) ; Navigate(TaskScreen, None)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =52
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =2
+
+        nextArrow_onboarding As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(25, 77, 199, 1)
+            FocusedBorderThickness: =0
+            Height: =40
+            HoverColor: =RGBA(30, 174, 247, 1)
+            Icon: =Icon.ChevronRight
+            OnSelect: =Set(_task, ThisItem) ; Navigate(TaskScreen, None)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Afficher les détails de l'élément"
+            Width: =67
+            X: =325
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        icon_checkOnboarding As icon.Check:
+            Color: =RGBA(124, 187, 0, 1)
+            DisplayMode: =
+            Height: =40
+            Icon: =Icon.Check
+            OnSelect: =
+            Visible: =If(ThisItem.Check=true, true, false)
+            Width: =25
+            X: =14
+            ZIndex: =4
+
+    label_tools As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =55
+        Size: =20
+        Text: ="Tools"
+        Width: =173
+        X: =600
+        Y: =129
+        ZIndex: =2
+
+    label_training As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =55
+        Size: =20
+        Text: ="Training"
+        X: =1057
+        Y: =129
+        ZIndex: =3
+
+    label_onboarding As label:
+        Align: =Align.Center
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =55
+        Size: =20
+        Text: ="Onboarding"
+        Width: =173
+        X: =161
+        Y: =129
+        ZIndex: =4
+
+    "gallery_tools As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+        Height: =530
+        Items: =Filter(taskCollection, label_tools.Text = Section.Value, _timeline = timeline.Value)
+        Layout: =Layout.Vertical
+        OnSelect: =Navigate(TaskScreen, ScreenTransition.Fade)
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =400
+        X: =487
+        Y: =194
+        ZIndex: =5
+
+        TextInput1 As text:
+            BorderThickness: =0
+            Default: =""
+            DisabledFill: =RGBA(241, 244, 249, 1)
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(243, 243, 243, 1)
+            Height: =30
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            Width: =380
+            Y: =5
+            ZIndex: =1
+
+        title_tools As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =Self.Size * 1.8
+            HoverColor: =RGBA(30, 174, 247, 1)
+            LineHeight: =1.5
+            OnSelect: =Set(_task, ThisItem) ; Navigate(TaskScreen)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =52
+            Y: =11
+            ZIndex: =2
+
+        nextArrow_tools As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(25, 77, 199, 1)
+            FocusedBorderThickness: =0
+            Height: =40
+            HoverColor: =RGBA(30, 174, 247, 1)
+            Icon: =Icon.ChevronRight
+            OnSelect: =Set(_task, ThisItem) ; Navigate(TaskScreen, None)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Afficher les détails de l'élément"
+            Width: =60
+            X: =331
+            ZIndex: =3
+
+        icon_checkTools As icon.Check:
+            Color: =RGBA(124, 187, 0, 1)
+            DisplayMode: =
+            Height: =40
+            Icon: =Icon.Check
+            OnSelect: =
+            Visible: =If(ThisItem.Check=true, true, false)
+            Width: =25
+            X: =13
+            ZIndex: =4
+
+    "gallery_training As gallery.'BrowseLayout_Vertical_OneTextVariant_ver4.0'":
+        Height: =530
+        Items: =Filter(taskCollection, label_training.Text = Section.Value, _timeline = timeline.Value)
+        Layout: =Layout.Vertical
+        TemplatePadding: =0
+        TemplateSize: =40
+        Width: =400
+        X: =932
+        Y: =194
+        ZIndex: =6
+
+        TextInput1_1 As text:
+            BorderThickness: =0
+            Default: =""
+            DisplayMode: =DisplayMode.View
+            Fill: =RGBA(243, 243, 243, 1)
+            Height: =30
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =50
+            RadiusBottomRight: =50
+            RadiusTopLeft: =50
+            RadiusTopRight: =50
+            Width: =380
+            Y: =5
+            ZIndex: =1
+
+        title_training As label:
+            Color: =RGBA(0, 18, 107, 1)
+            Height: =Self.Size * 1.8
+            HoverColor: =RGBA(30, 174, 247, 1)
+            LineHeight: =1.5
+            OnSelect: =Set(_task, ThisItem) ; Navigate(TaskScreen)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =10
+            Text: =ThisItem.Title
+            VerticalAlign: =VerticalAlign.Top
+            Width: =Parent.TemplateWidth - 104
+            X: =52
+            Y: =11
+            ZIndex: =2
+
+        nextArrow_training As icon.ChevronRight:
+            AccessibleLabel: =Self.Tooltip
+            BorderColor: =RGBA(0, 0, 0, 0)
+            Color: =RGBA(25, 77, 199, 1)
+            FocusedBorderThickness: =0
+            Height: =40
+            HoverColor: =RGBA(30, 174, 247, 1)
+            Icon: =Icon.ChevronRight
+            OnSelect: =Set(_task, ThisItem) ; Navigate(TaskScreen, None)
+            PaddingBottom: =10
+            PaddingLeft: =10
+            PaddingRight: =10
+            PaddingTop: =10
+            TabIndex: =0
+            Tooltip: ="Afficher les détails de l'élément"
+            Width: =60
+            X: =331
+            Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+            ZIndex: =3
+
+        icon_checkTraining As icon.Check:
+            Color: =RGBA(124, 187, 0, 1)
+            DisplayMode: =
+            Height: =40
+            Icon: =Icon.Check
+            OnSelect: =
+            Visible: =If(ThisItem.Check=true, true, false)
+            Width: =25
+            X: =14
+            ZIndex: =4
+
+    icon_backSection As icon.BackArrow:
+        Color: =RGBA(25, 77, 199, 1)
+        Height: =45
+        HoverColor: =RGBA(30, 174, 247, 1)
+        Icon: =Icon.BackArrow
+        OnSelect: =Navigate(RoadmapScreen,None)
+        Width: =45
+        X: =48
+        Y: =34
+        ZIndex: =8
+
+    icon_homeSection As icon.Home:
+        Color: =RGBA(25, 77, 199, 1)
+        Height: =50
+        HoverColor: =RGBA(30, 174, 247, 1)
+        Icon: =Icon.Home
+        OnSelect: =Navigate(DashboardScreen,None)
+        Width: =50
+        X: =108
+        Y: =29
+        ZIndex: =9
+
+    label_timeline As label:
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =44
+        Size: =20
+        Text: =_timeline
+        Width: =171
+        X: =646
+        Y: =39
+        ZIndex: =11
+
+    logo_section As image:
+        Height: =65
+        Image: =microsoft
+        Width: =152
+        X: =1163
+        Y: =29
+        ZIndex: =12
+
+    picture_timeline As image:
+        Height: =113
+        Image: =Switch(_timeline, "2 weeks", '2weeks', "1 month", '1month', "3 months", '3months')
+        Width: =110
+        X: =578
+        Y: =5
+        ZIndex: =13
+
+    label_contact_2 As label:
+        Color: =RGBA(130, 141, 158, 1)
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: |-
+            ="TASKS LEGEND: 👻 Shadow | ⚠️ Important activity | 👓 Notion that must be seen in classroom (i.e. presented by someone). "
+        Width: =1066
+        X: =16
+        Y: =728
+        ZIndex: =14
+

@@ -1,0 +1,278 @@
+ManagerScreen As screen:
+    BackgroundImage: =
+    ImagePosition: =ImagePosition.Stretch
+    OnVisible: =
+
+    Image7 As image:
+        Height: =768
+        Image: =m1
+        ImagePosition: =ImagePosition.Stretch
+        Width: =415
+        ZIndex: =1
+
+    label_welcomeManager As label:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        Color: =RGBA(0, 18, 107, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        FontWeight: =FontWeight.Bold
+        Height: =54
+        Size: =16
+        Text: ="Hello " & User().FullName & " !"
+        Width: =414
+        X: =25
+        Y: =211
+        ZIndex: =4
+
+    picture_user_2 As image:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =2
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledFill: =RGBA(0, 0, 0, 0)
+        FocusedBorderThickness: =4
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Image: =User().Image
+        PressedBorderColor: =RGBA(0, 0, 0, 0)
+        PressedFill: =RGBA(0, 0, 0, 0)
+        RadiusBottomLeft: =picture_user_2.Height
+        RadiusBottomRight: =picture_user_2.Height
+        RadiusTopLeft: =picture_user_2.Height
+        RadiusTopRight: =picture_user_2.Height
+        X: =141
+        Y: =102
+        ZIndex: =5
+
+    label_infoManager As label:
+        Align: =Left
+        Color: =RGBA(0, 18, 107, 1)
+        Height: =176
+        Size: =16
+        Text: |-
+            ="You can see here the progress of your team, you can share the application with the new hires by using the link below :                   
+            "
+        Width: =333
+        X: =27
+        Y: =233
+        ZIndex: =7
+
+    label_contactManager As label:
+        Color: =RGBA(128, 128, 128, 1)
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: ="If you have an issue, please contact"
+        Width: =335
+        X: =946
+        Y: =728
+        ZIndex: =8
+
+    Label1 As label:
+        Height: =0
+        Text: ="Inviter qq button"
+        X: =820
+        Y: =556
+        ZIndex: =11
+
+    Image6 As image:
+        Height: =225
+        Image: =invit
+        Width: =201
+        X: =60
+        Y: =543
+        ZIndex: =17
+
+    Image2 As image:
+        Height: =598
+        Image: =DS
+        Width: =918
+        X: =394
+        Y: =112
+        ZIndex: =18
+
+    Image3 As image:
+        Height: =637
+        Image: =PP1
+        Width: =802
+        X: =452
+        Y: =91
+        ZIndex: =19
+
+    Image8 As image:
+        Height: =30
+        Image: =pp2
+        Width: =239
+        X: =743
+        Y: =698
+        ZIndex: =20
+
+    "gallery_completion As gallery.'BrowseLayout_Horizontal_TwoTextOneImageVariant_ver4.0'":
+        Height: =505
+        Items: =Filter(list_person, _email = managerEmail || _email = manager2Email)
+        TemplatePadding: =0
+        TemplateSize: =251
+        Width: =802
+        WrapCount: =2
+        X: =452
+        Y: =191
+        ZIndex: =21
+
+        picture_person As image:
+            Image: =ThisItem.person.Picture
+            OnSelect: =Select(Parent)
+            RadiusBottomLeft: =90
+            RadiusBottomRight: =90
+            RadiusTopLeft: =90
+            RadiusTopRight: =90
+            X: =75
+            ZIndex: =1
+
+        label_completion As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Bold
+            Height: =46
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Text: =ThisItem.completion & "%"
+            VerticalAlign: =VerticalAlign.Top
+            Width: =152
+            X: =49
+            Y: =140
+            ZIndex: =2
+
+        label_name As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            FontWeight: =FontWeight.Semibold
+            Height: =26
+            OnSelect: =Select(Parent)
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            Size: =12
+            Text: =ThisItem.person.DisplayName
+            VerticalAlign: =VerticalAlign.Top
+            Width: =233
+            X: =8
+            Y: =111
+            ZIndex: =3
+
+        Button1 As button:
+            DisabledBorderColor: =RGBA(0, 0, 0, 0)
+            DisabledColor: =RGBA(0, 0, 0, 0)
+            DisabledFill: =RGBA(0, 0, 0, 0)
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =186
+            HoverBorderColor: =
+            HoverColor: =RGBA(0, 0, 0, 0)
+            HoverFill: =
+            OnSelect: =Set(_newHire, ThisItem) ; Concurrent(ClearCollect(taskList, Filter(list_tasks, ThisItem.role.Value in role.Value || "ALL" in role.Value)), ClearCollect(taskComplete, Filter(list_tasks_complete_by, cr77a_name = ThisItem.personEmail))); ClearCollect(taskCollection, AddColumns(taskList,"Check",If(LookUp(taskComplete,ID = cr77a_task_id, true) ,true, false))) ; Navigate(ManagerFollowScreen, None)
+            PressedBorderColor: =
+            PressedFill: =
+            Text: =""
+            X: =40
+            ZIndex: =4
+
+    button_contact_1 As button:
+        Color: =RGBA(128, 128, 128, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Normal
+        HoverColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Italic: =true
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: ="OBC CSU admin"
+        Underline: =true
+        Width: =130
+        X: =1215
+        Y: =728
+        ZIndex: =22
+
+    logo_task_2 As image:
+        Height: =65
+        Image: =microsoft
+        Width: =152
+        X: =1163
+        Y: =29
+        ZIndex: =23
+
+    label_logoRegistration_1 As label:
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =59
+        Size: =20
+        Text: ="Onboarding@CSU"
+        Width: =251
+        X: =109
+        Y: =32
+        ZIndex: =24
+
+    picture_logoRegistration_1 As image:
+        Height: =50
+        Image: ='onboarding@CSU_logo'
+        Width: =50
+        X: =48
+        Y: =36
+        ZIndex: =25
+
+    button_roadmap_3 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderThickness: =0
+        Fill: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =55
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_impersonation, true) ;  Set(_role, Blank()) ; Navigate(WelcomeScreen, None)
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =13
+        Text: ="Try app as a New Hire"
+        Width: =217
+        X: =60
+        Y: =488
+        ZIndex: =27
+
+    Label5 As label:
+        Color: =RGBA(0, 16, 96, 1)
+        FontWeight: =FontWeight.Semibold
+        Height: =47
+        Size: =16
+        Text: ="""aka.ms/OnboardingCSU"""
+        Width: =275
+        X: =31
+        Y: =372
+        ZIndex: =28
+
+    button_contact_4 As button:
+        Color: =RGBA(9, 33, 98, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =43
+        HoverColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Italic: =true
+        OnSelect: |-
+            =Launch("https://msit.powerbi.com/groups/me/apps/97e87419-44ed-4589-9cac-58b9791cae91/reports/e6c8a408-b255-4480-a3c0-5b7775f210fd/ReportSection73e74ed605ad054d0bd7?ctid=72f988bf-86f1-41af-91ab-2d7cd011db47")
+        Size: =12
+        Text: ="Power BI Manager | Worldwide Learning TSI"
+        Underline: =true
+        Width: =343
+        X: =452
+        Y: =725
+        ZIndex: =30
+

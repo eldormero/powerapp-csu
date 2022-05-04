@@ -1,0 +1,320 @@
+RegistrationScreen As screen:
+    BackgroundImage: =BGabstrait
+    ImagePosition: =ImagePosition.Stretch
+
+    Image11 As image:
+        Height: =768
+        Image: =R2
+        ImagePosition: =ImagePosition.Stretch
+        Width: =662
+        X: =704
+        ZIndex: =1
+
+    label_logoRegistration As label:
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =59
+        Size: =20
+        Text: ="Onboarding@CSU"
+        Width: =251
+        X: =109
+        Y: =32
+        ZIndex: =3
+
+    picture_logoRegistration As image:
+        Height: =50
+        Image: ='onboarding@CSU_logo'
+        Width: =50
+        X: =48
+        Y: =36
+        ZIndex: =4
+
+    label_registration As label:
+        Align: =Center
+        Color: =RGBA(0, 18, 107, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =69
+        Size: =20
+        Text: ="Registration"
+        Width: =205
+        X: =967
+        Y: =86
+        ZIndex: =5
+
+    label_information As label:
+        Color: =RGBA(0, 18, 107, 1)
+        Height: =95
+        Size: =16
+        Text: ="Your are not yet register as New person or Manager. Please fill the form and click on Sign In. "
+        Width: =546
+        X: =797
+        Y: =179
+        ZIndex: =6
+
+    form_registration As form:
+        AcceptsFocus: =false
+        DataSource: =list_person
+        DefaultMode: =FormMode.New
+        Height: =346
+        NumberOfColumns: =1
+        Width: =495
+        X: =822
+        Y: =274
+        ZIndex: =7
+
+        dataCard_person As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="person"
+            Default: =ThisItem.person
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: ="person"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =dataCardValue_person.Selected
+            Width: =495
+            X: =0
+            Y: =0
+            ZIndex: =10
+
+            dataCardKey_person As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                Text: ="Your alias"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dataCardValue_person As combobox:
+                BorderColor: =RGBA(25, 77, 199, 1)
+                ChevronBackground: =RGBA(25, 77, 199, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["DisplayName","Email","Picture"]
+                DisplayMode: =Parent.DisplayMode
+                Items: =Choices([@list_person].person)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["DisplayName"]
+                SearchItems: =Choices(list_person.person,dataCardValue_person.SearchText)
+                SelectionFill: =RGBA(25, 77, 199, 1)
+                SelectMultiple: =false
+                Template: =ListItemTemplate.Person
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dataCardKey_person.Y + dataCardKey_person.Height + 5
+                ZIndex: =2
+
+            star2 As label:
+                Align: =Align.Center
+                Height: =dataCardKey_person.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =dataCardKey_person.Y
+                ZIndex: =4
+
+        dataCard_role As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="role"
+            Default: =ThisItem.role
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: ="role"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =dataCardValue_role.Selected
+            Width: =495
+            X: =0
+            Y: =1
+            ZIndex: =10
+
+            dataCardKey_role As label:
+                AutoHeight: =true
+                FontWeight: =FontWeight.Semibold
+                Height: =34
+                Text: ="Your role"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            dataCardValue_role As combobox:
+                BorderColor: =RGBA(25, 77, 199, 1)
+                ChevronBackground: =RGBA(25, 77, 199, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Items: =Choices([@list_person].role)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["Value"]
+                SearchItems: =Choices(list_person.role,dataCardValue_role.SearchText)
+                SelectionFill: =RGBA(25, 77, 199, 1)
+                SelectMultiple: =false
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =dataCardKey_role.Y + dataCardKey_role.Height + 5
+                ZIndex: =2
+
+            star3 As label:
+                Align: =Align.Center
+                Height: =dataCardKey_role.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =dataCardKey_role.Y
+                ZIndex: =4
+
+        dataCard_manager As typedDataCard.comboBoxEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="manager"
+            Default: =
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: ="manager"
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =99
+            Required: =true
+            Update: =dataCardValue_manager.Selected
+            Width: =495
+            X: =0
+            Y: =2
+            ZIndex: =10
+
+            dataCardKey_manager As label:
+                FontWeight: =FontWeight.Semibold
+                Height: =50
+                Text: ="Manager (or/and person following your onboarding)"
+                Width: =500
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            star4 As label:
+                Align: =Align.Center
+                Height: =dataCardKey_manager.Height
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =dataCardKey_manager.Y
+                ZIndex: =4
+
+            dataCardValue_manager As combobox:
+                BorderColor: =RGBA(25, 77, 199, 1)
+                ChevronBackground: =RGBA(25, 77, 199, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisplayFields: =["DisplayName","Email","Picture"]
+                DisplayMode: =Parent.DisplayMode
+                Items: =Choices([@list_person].person)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                SearchFields: =["DisplayName"]
+                SearchItems: =Choices(list_person.person,dataCardValue_manager.SearchText)
+                SelectionFill: =RGBA(25, 77, 199, 1)
+                SelectMultiple: =false
+                Template: =ListItemTemplate.Person
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =59
+                ZIndex: =5
+
+    button_register As button:
+        BorderColor: =RGBA(30, 174, 247, 1)
+        BorderThickness: =0
+        DisplayMode: =If( IsBlank(dataCardValue_person) && IsBlank(dataCardValue_role)  && IsBlank(dataCardValue_manager) , Disabled, Edit)
+        Fill: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: |-
+            =Patch(list_person, Defaults(list_person), { person: dataCardValue_person.Selected, Title: "x", role:dataCardValue_role.Selected, managerEmail: dataCardValue_manager.Selected.Email, completion: 0, personEmail: _email }) ; Refresh(list_person) ;  Navigate(WelcomeScreen,None)
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =16
+        Text: ="Sign In"
+        Width: =182
+        X: =859
+        Y: =610
+        ZIndex: =8
+
+    label_contactRegistration As label:
+        Color: =RGBA(128, 128, 128, 1)
+        Height: =60
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: ="If you have an issue, please contact"
+        Width: =288
+        X: =949
+        Y: =708
+        ZIndex: =9
+
+    Image1 As image:
+        Height: =635
+        Image: =R3
+        Width: =564
+        X: =65
+        Y: =105
+        ZIndex: =11
+
+    logo_task_1 As image:
+        Height: =65
+        Image: =microsoft
+        Width: =152
+        X: =1163
+        Y: =29
+        ZIndex: =12
+
+    button_contact As button:
+        Color: =RGBA(128, 128, 128, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        FontWeight: =FontWeight.Normal
+        HoverColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(0, 0, 0, 0)
+        Italic: =true
+        OnSelect: |-
+            =Launch( "mailto:" & "obc-csu-admin@microsoft.com")
+        Size: =12
+        Text: ="OBC CSU admin"
+        Underline: =true
+        Width: =130
+        X: =1213
+        Y: =718
+        ZIndex: =13
+
+    button_roadmap_8 As button:
+        BorderColor: =RGBA(30, 174, 247, 1)
+        BorderThickness: =0
+        Fill: =RGBA(25, 77, 199, 1)
+        Height: =50
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        Italic: =true
+        OnSelect: =Set(_impersonation, true) ;  Set(_role, Blank()) ; Navigate(WelcomeScreen, None)
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =12
+        Text: ="If you want to try without register, click here !"
+        Width: =222
+        X: =1078
+        Y: =610
+        ZIndex: =14
+

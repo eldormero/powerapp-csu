@@ -1,0 +1,51 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+    "CdpRevision": {
+      "BaseUrl": "/",
+      "LastChangedTimeString": "2021-12-14T21:07:59.1080000Z",
+      "RevisionNumber": 1
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "{Attachments}": "Pièces jointes",
+      "{Attachments}@odata.type": "{Attachments} ({Attachments}@odata.type)",
+      "{FilenameWithExtension}": "Nom de fichier avec l’extension",
+      "{FullPath}": "Chemin d'accès complet",
+      "{HasAttachments}": "Comporte des pièces jointes",
+      "{Identifier}": "Identificateur",
+      "{IsFolder}": "EstUnDossier",
+      "{Link}": "Lien vers l’élément",
+      "{ModerationComment}": "Commentaires associés à l’approbation de contenu de cet élément de liste",
+      "{ModerationStatus}": "État d’approbation du contenu",
+      "{Name}": "Nom",
+      "{Path}": "Chemin d’accès au dossier",
+      "{Thumbnail}": "Thumbnail",
+      "{TriggerWindowEndToken}": "Jeton de fin de la fenêtre du déclencheur",
+      "{TriggerWindowStartToken}": "Jeton de démarrage de la fenêtre du déclencheur",
+      "{VersionNumber}": "Numéro de version",
+      "Author": "Created By",
+      "Author#Claims": "Created By Claims",
+      "completion2": "completion",
+      "ComplianceAssetId": "Compliance Asset Id",
+      "Created": "Created",
+      "Editor": "Modified By",
+      "Editor#Claims": "Modified By Claims",
+      "ID": "ID",
+      "manager2Email": "manager2Email",
+      "managerEmail": "managerEmail",
+      "Modified": "Modified",
+      "person": "person",
+      "person#Claims": "person Claims",
+      "personEmail": "personEmail",
+      "role": "role",
+      "role#Id": "role Id",
+      "Title": "Title"
+    },
+    "DatasetName": "https://microsofteur.sharepoint.com/teams/OnboardingCSU",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "list_person",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

@@ -1,0 +1,48 @@
+LoadingScreen As screen:
+    BackgroundImage: =
+    Fill: =RGBA(0, 18, 107, 1)
+    ImagePosition: =ImagePosition.Stretch
+    OnVisible: =
+
+    button_dashboard_1 As button:
+        BorderColor: =RGBA(30, 174, 247, 1)
+        BorderThickness: =0
+        Fill: =RGBA(25, 77, 199, 1)
+        FontWeight: =FontWeight.Bold
+        Height: =50
+        HoverBorderColor: =RGBA(30, 174, 247, 1)
+        HoverFill: =RGBA(30, 174, 247, 1)
+        OnSelect: =Set(_impersonation, false) ; If(LookUp(list_person, managerEmail = _email || manager2Email = _email, true), Navigate(ManagerScreen, None),LookUp(list_person, personEmail = _email, true), Navigate(DashboardScreen, None), Navigate(RegistrationScreen, None))
+        PressedBorderColor: =RGBA(30, 174, 247, 1)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =RGBA(30, 174, 247, 1)
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =16
+        Text: ="Launch"
+        Width: =182
+        X: =592
+        Y: =463
+        ZIndex: =3
+
+    label_logo_1 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =59
+        Text: ="Onboarding@CSU"
+        Width: =1350
+        X: =8
+        Y: =344
+        ZIndex: =4
+
+    picture_logo_1 As image:
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =152
+        Image: ='onboarding@CSU_logo'
+        Width: =152
+        X: =607
+        Y: =192
+        ZIndex: =5
+

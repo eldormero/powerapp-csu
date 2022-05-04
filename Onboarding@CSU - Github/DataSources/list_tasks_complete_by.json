@@ -1,0 +1,97 @@
+[
+  {
+    "DisplayName": "list_tasks_complete_by (Affichages)",
+    "Name": "_cr77a_list_tasks_complete_by_views",
+    "RelatedEntityName": "list_tasks_complete_by",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "1ebed519-d98b-4cd9-a862-4921c1de72d4": "list_tasks_complete_by Advanced Find View",
+      "28382003-1934-41db-a209-a659cdea31fd": "Inactive list_tasks_complete_by",
+      "50af541b-7f5c-481a-a13e-6b9dbfb952da": "Active list_tasks_complete_by",
+      "e3733795-6444-eb11-a812-000d3a958fa2": "view_perso_amelie",
+      "fb87ad09-162f-43d6-a28e-19d00435a820": "list_tasks_complete_by Lookup View",
+      "fe1355b4-dcf8-4ce0-9a34-efe73543714a": "list_tasks_complete_by Associated View"
+    }
+  },
+  {
+    "DisplayName": "Status (list_tasks_complete_by)",
+    "Name": "cr77a_list_tasks_complete_by_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "list_tasks_complete_by"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "list_tasks_complete_by",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (list_tasks_complete_by)",
+    "Name": "cr77a_list_tasks_complete_by_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "list_tasks_complete_by"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "list_tasks_complete_by",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr77a_list_tasks_complete_bies",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr77a_list_tasks_complete_by",
+    "MaxGetRowsCount": 500,
+    "Name": "list_tasks_complete_by",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "_ownerid_value": "Owner",
+      "cr77a_list_tasks_complete_by_AsyncOperations": "System Jobs",
+      "cr77a_list_tasks_complete_by_BulkDeleteFailures": "Bulk Delete Failures",
+      "cr77a_list_tasks_complete_by_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cr77a_list_tasks_complete_by_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cr77a_list_tasks_complete_by_ProcessSession": "Process Sessions",
+      "cr77a_list_tasks_complete_by_SyncErrors": "Sync Errors",
+      "cr77a_list_tasks_complete_byid": "list_tasks_complete_by",
+      "cr77a_name": "user_Email",
+      "cr77a_task_id": "task_ID",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "overriddencreatedon": "Record Created On",
+      "owningbusinessunit": "Owning Business Unit",
+      "owningteam": "Owning Team",
+      "owninguser": "Owning User",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "list_tasks_complete_by",
+    "Type": "NativeCDSDataSourceInfo"
+  }
+]
